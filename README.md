@@ -176,7 +176,7 @@ python train.py
 
 You can download the trained model weights from Google Drive:
 
-👉 **[Download Pretrained Model](PASTE_YOUR_GDRIVE_LINK_HERE)**
+👉 **[Download Pretrained Model](https://drive.google.com/drive/folders/1ngQAZqEZkSeeRCmZEcd53Tf7IxRRpz5Z?usp=sharing)**
 
 ### 📦 Setup
 
