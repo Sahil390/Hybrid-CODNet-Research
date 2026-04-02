@@ -130,26 +130,34 @@ Kvasir-SEG/
 
 ---
 
-## 📈 Expected Performance
+---
+
+## 📊 Results
+
+The model was evaluated on the Kvasir-SEG test set.
+
+### Quantitative Results
 
 | Metric | Value |
 |--------|------|
-| IoU | ~0.85 |
-| Dice | ~0.90 |
-| Precision | High |
-| Recall | Moderate-High |
+| IoU | 0.8381 |
+| Dice (F1 Score) | 0.9119 |
+| Precision | 0.9251 |
+| Recall | 0.8991 |
+| Accuracy | 0.9732 |
 
 ---
 
-## 🔄 Training Behavior
+### 📌 Analysis
 
-| Epoch | Observation |
-|------|------------|
-| 1–5 | Noisy predictions |
-| 5–15 | Rough detection |
-| 15–30 | Shape learning |
-| 30+ | Boundary refinement |
+- High **Dice score (0.91)** indicates strong overlap with ground truth  
+- High **Precision (0.92)** shows accurate predictions with few false positives  
+- Balanced **Recall (0.89)** ensures most polyps are detected  
+- IoU (~0.84) confirms solid region segmentation  
 
+👉 Overall, the model performs well in both **region detection and boundary refinement**.
+
+---
 ---
 
 ## 🚀 How to Run
@@ -262,16 +270,6 @@ Use edge-aware modules to sharpen segmentation outputs.
 
 ---
 
-## 📊 Expected Results
-
-| Metric | Score |
-|--------|------|
-| IoU | ~0.85 |
-| Dice | ~0.90 |
-| Precision | High |
-| Recall | Moderate–High |
-
----
 
 ## 📌 Future Work
 
