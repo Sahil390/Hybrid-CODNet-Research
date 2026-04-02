@@ -106,11 +106,19 @@ Loss =
 
 ## 📂 Dataset
 
-**Kvasir-SEG**
+We use the **Kvasir-SEG dataset** for training and evaluation.
 
 - 1000 images  
-- 1000 masks  
-- Binary segmentation  
+- 1000 segmentation masks  
+- Binary polyp segmentation  
+
+### 📥 Download Dataset
+
+👉 [Download Kvasir-SEG Dataset](https://datasets.simula.no/kvasir-seg/)
+
+---
+
+### 📁 Dataset Structure
 
 Kvasir-SEG/
 ├── images/
@@ -127,8 +135,6 @@ Kvasir-SEG/
 | Optimizer | AdamW |
 | Learning Rate | 1e-4 |
 | Epochs | 50 |
-
----
 
 ---
 
@@ -157,7 +163,6 @@ The model was evaluated on the Kvasir-SEG test set.
 
 👉 Overall, the model performs well in both **region detection and boundary refinement**.
 
----
 ---
 
 ## 🚀 How to Run
@@ -250,14 +255,55 @@ This makes standard segmentation models unreliable.
 
 We address this problem using three key ideas:
 
-### 1. Learn Better Representations  
-Use a strong encoder (ConvNeXt) to extract meaningful features from raw pixels.
+---
 
-### 2. Focus on Missed Regions  
-Use **reverse attention** to force the model to learn from its mistakes.
+### 1. Camouflage-Aware Learning
 
-### 3. Refine Boundaries Explicitly  
-Use edge-aware modules to sharpen segmentation outputs.
+Instead of treating segmentation as a standard object detection task,  
+we model it as a **camouflage detection problem**.
+
+Polyps often blend into surrounding tissue, making them difficult to distinguish.  
+By focusing on subtle differences between foreground and background,  
+the model learns to detect hidden structures.
+
+---
+
+### 2. Focus on Missed Regions
+
+We use **reverse attention** to force the model to learn from its mistakes.
+RA = (1 - prediction) × features
+
+This helps uncover regions that were not detected initially.
+
+---
+
+### 3. Refine Boundaries Explicitly
+
+We use edge-aware modules to improve boundary precision.
+
+This ensures sharper segmentation and better alignment with ground truth.
+---
+
+## 🚀 Why This Is Better
+
+| Before | After |
+|--------|------|
+| Generic deep learning explanation | Clear research-driven idea |
+| Looks like a basic U-Net variant | Framed as a novel approach |
+| Core idea is hidden | Camouflage concept is explicit |
+| Weak conceptual framing | Strong first-principles reasoning |
+
+---
+
+### 📌 Key Improvement
+
+By explicitly introducing **camouflage-aware learning**,  
+the model is no longer seen as just another segmentation network.
+
+Instead, it becomes a **concept-driven solution** that addresses  
+the fundamental challenge:
+
+> detecting objects that visually blend into their surroundings
 
 ---
 
